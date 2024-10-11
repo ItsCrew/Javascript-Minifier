@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript Minifier</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.ghostly.cloud/pec/css/codemirror.css">
+<script type="text/javascript" src="https://cdn.ghostly.cloud/pec/js/cm/codemirror.js"></script>
+<script type="text/javascript" src="https://cdn.ghostly.cloud/pec/js/cm/javascript.js"></script>
+<script type="text/javascript" src="https://cdn.ghostly.cloud/pec/js/cm/htmlmixed.js"></script>
+    <script type="text/javascript" src="https://cdn.ghostly.cloud/pec/js/cm/addons/selection-pointer.js"></script>
+    <script type="text/javascript" src="https://cdn.ghostly.cloud/pec/js/cm/addons/active-line.js"></script>
   </head>
 
   <body>
@@ -33,5 +39,24 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+      const editor = CodeMirror.fromTextArea(desc, {
+        mode: 'application/javascript',
+        editable: true,
+        gutters: [
+          'CodeMirror-linenumbers'
+        ],
+        styleActiveLine: true,
+        highlightActiveLine: true,
+        codeFolding: true,
+        lineWrapping: true,
+        lineNumbers: true,
+        selectionPointer: true
+      });
+      editor.setValue(window.__event.description);
+      setTimeout(() => {
+          editor.refresh();
+      }, 10);
+      </script>
   </body>
 </html>
